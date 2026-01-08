@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #eef7f1;
+      color: #2f4f3e;
+    }
+
+    .box {
+      text-align: center;
+      padding: 28px 32px;
+      border-radius: 14px;
+      background: #ffffff;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.07);
+      max-width: 280px;
+    }
+
+    .main {
+      font-size: 15px;
+      min-height: 28px;
+      margin-bottom: 18px;
+      transition: opacity 0.3s ease;
+    }
+
+    button {
+      background: none;
+      border: 1px solid #cfe3d6;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 14px;
+      color: #2f4f3e;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    button:hover {
+      background: #f1faf5;
+    }
+
+    .hint {
+      position: fixed;
+      bottom: 30px;
+      background: #ffffff;
+      border: 1px solid #cfe3d6;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .hint.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <div class="main" id="main">just a small hello.</div>
+    <button onclick="tap()">tap</button>
+  </div>
+
+  <div class="hint" id="hint">tap again</div>
+
+  <script>
+    const messages = [
+      "hope your day is calm.",
+      "just wanted you to smile.",
+      "that’s it.",
+      "i love you."
+    ];
+
+    let step = 0;
+    const main = document.getElementById("main");
+    const hint = document.getElementById("hint");
+
+    function tap() {
+      if (step < messages.length) {
+        main.textContent = messages[step];
+
+        // show hint only after first tap
+        if (step === 0) {
+          hint.classList.add("show");
+          setTimeout(() => hint.classList.remove("show"), 1200);
+        }
+
+        step++;
+      }
+    }
+  </script>
+
+</body>
+</html>
